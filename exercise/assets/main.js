@@ -141,7 +141,6 @@ const getDataFilms = async () => {
         const data = await getDataWithAsync();
 
          const films = data.map( ({title, director, release_date, description})=> {
-            //return title +  director + release_date + description
 
             document.getElementById('content').innerHTML += '<article class="stylefilm"><h1>'+title+'</h1><h2>'+director+'</h2><h2>'+release_date+'</h2><p>'+description+'</p></article>';
          })
