@@ -63,7 +63,6 @@ html{
 
 #content{
     width: 100%;
-    height: 100vh;
     display: inline-flex;
 	flex-wrap: wrap;
 	margin: 0 auto;
@@ -73,7 +72,7 @@ html{
 .stylefilm{
 	width: 30%;
     height: fit-content;
-    background-color: #1d518ea8;
+    background-color: #1d518ecf;
     margin: 1em;
 	padding: 1em;
 	border-radius: 1em;
