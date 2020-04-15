@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Rick, hello Morty!</title>
+    <link rel="stylesheet" href="assets/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
@@ -36,16 +37,15 @@
 
 
     <div class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content">
-        </div>
-        <div class="table-container">
-                <div id="data-character"></div>
-                <table class="table">
-                <!-- Any other Bulma elements you want -->
-                <p>ESTE ES MI MODAL FUCKIN BULMA</p>
-                </table>
+        <div class="modal-background">
+            <div class="modal-content">
+                <div class="table-container">
+                    <div id="data-character"></div>
+                    <table class="table">
+                    </table>
+                </div>
             </div>
+        </div>
         <button class="modal-close is-large" aria-label="close"></button>
     </div>
 
@@ -119,7 +119,7 @@
 
 
         const $modalTable = document.querySelector('.table');
-        const $dataCharacterModal = document.querySelector('.modal-content');
+        const $dataCharacterModal = document.querySelector('#data-character');
 
         const main = async () => {
 
@@ -161,7 +161,7 @@
             })
             $modalClose.addEventListener('click', () => {
                 $modal.classList.remove("is-active");
-                //$modal.innerHTML = " ";
+                $modalTable.innerHTML = " ";
             })
 
         }
@@ -191,19 +191,17 @@
                 const response = await fetch(episode[i]);
                 const episodeData = await response.json();
                 const {name, episode: episodeCe, air_date} = episodeData;
-                //episodeDataArr.push({name, episodeCe, air_date});
-                //episodeData.push({name, episodeCe, air_date});
 
                 $modalTable.innerHTML +=`<th>${episodeCe}</th><td>${name}</td><td>${air_date}</td>`;
             
             }
 
-            showDataModal(image, name, status);
+            showDataModal(image, name, status, location);
         }
 
-        const showDataModal = (image, name, status, episode) => {
+        const showDataModal = (image, name, status, location) => {
 
-            $dataCharacterModal.innerHTML = `<img src="${image}"><div class= "infoPersonaje"><h1>"${name}"</h1><p>"${status}"</p></div>`;
+            $dataCharacterModal.innerHTML = `<img src=${image}><div class= "infoPersonaje"><h1>${name}</h1><p>${status}</p><p>${location.name}</p></div>`;
             
         }
 
